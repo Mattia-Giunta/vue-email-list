@@ -28,7 +28,7 @@ const { createApp } = Vue
                 console.log(results.data.response)
                 this.emailGenerata = results.data.response
             })
-        }
+        },
 
     },
   }).mount('#app')
