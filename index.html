@@ -19,15 +19,22 @@
 
             <h1>Genera dieci Email</h1>
     
+            <!-- bottone con funzione richiamata al click -->
             <button 
             type="button" 
             class="btn btn-primary col-1 my-4 "
-            @click="emailRandom"
-            >Primary</button> 
+            @click="emailRandom()"
+            >Genera</button> 
     
-            <ul class="list-group ">
+            <!-- lista con condizionale che viene stampata quando la lunghezza arriva a 10 -->
+            <ul v-if="emailGenerate.length === 10" class="list-group ">
 
-                <li class="list-group-item">{{emailGenerata}}</li>
+                <!-- list item con ciclo per stampare tutte le mail che sono state generate  -->
+                <li 
+                class="list-group-item"
+                v-for="(element, index) in emailGenerate"
+                :key="index">
+                {{ element }}></li>
                 
             </ul>
 
@@ -50,3 +57,4 @@
     
 </body>
 </html>
+<!-- Terminato esercizio -->

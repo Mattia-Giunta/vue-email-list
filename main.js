@@ -14,7 +14,9 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        emailGenerata: 'Giovanni',
+
+        // array vuoto per dove mettere le 10 mail generate con il ciclo
+        emailGenerate: [],
         
       }
       
@@ -23,12 +25,30 @@ const { createApp } = Vue
         
     },
     methods: {
+        
         emailRandom(){
-            axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then( (results) => {
-                console.log(results.data.response)
-                this.emailGenerata = results.data.response
-            })
+
+            // condizione che azzera la lista tutte le volte che schiacci il bottone
+            if (this.emailGenerate.length !== 0) {
+
+                this.emailGenerate = [];
+            }
+
+            // ciclo che gerera 10 mail casuali tramite api
+            for (let i = 0; i < 10; i++) {
+
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then( ( result ) => { 
+
+                    let emailGenerata = result.data.response;
+
+                    this.emailGenerate.push(emailGenerata);
+
+                })
+            }
+            console.log(this.emailGenerate)
         },
 
     },
   }).mount('#app')
+
+//   Terminato esercizio 
